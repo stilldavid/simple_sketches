@@ -26,7 +26,6 @@ int irqpin = 3;  // D2
 uint16_t touchstatus;
 char digit;
 
-
 SoftwareSerial display(3, 2);
 
 void setup()
