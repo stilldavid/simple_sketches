@@ -3,7 +3,7 @@
 
 SoftwareSerial display(3, 2);
 
-const int irPin = 4;
+const int irPin = A5;
 
 void setup()
 {
@@ -32,6 +32,6 @@ void loop()
   else
     display.write("Gate Obstructed!");
 
-  delay(100);
+  delay(50);
 }
 
