@@ -50,16 +50,25 @@ void setup()
   display.write("                ");
 }
 
+int dir = 1;
 void loop()
 {
   char toprint = getDigit();
-  Serial.print(toprint);
-  display.write(toprint);
-  delay(100);
+
+  if(dir) {
+    Serial.print(toprint);
+    display.write(toprint);
+    delay(100);
+    dir = 0;
+  } else {
+    dir = 1;
+  }
 }
 
 char getDigit()
 {
+  checkInterrupt();
+
   while(checkInterrupt())
     ;
 
@@ -108,8 +117,9 @@ char getDigit()
 
 byte checkInterrupt(void)
 {
-  if(digitalRead(irqpin))
+  if(digitalRead(irqpin)) {
     return 1;
+  }
 
   return 0;
 }

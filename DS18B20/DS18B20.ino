@@ -26,7 +26,7 @@ void loop(void) {
 
   Serial.println(tmp);
 
-  sprintf(tmpstring, "%3d C", tmp);
+  sprintf(tmpstring, "%3d F", tmp);
   display.write(tmpstring);
 
   display.write(254); // move cursor to beginning of first line
@@ -79,5 +79,5 @@ float getTemp(){
   float tempRead = ((MSB << 8) | LSB); //using two's compliment
   float TemperatureSum = tempRead / 16;
 
-  return TemperatureSum;
+  return (TemperatureSum * 18 + 5)/10 + 32;
 }
